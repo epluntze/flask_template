@@ -1,20 +1,64 @@
 -- Initialize the database.
 -- Drop any existing data and create empty tables.
 
-DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS developers;
+DROP TABLE IF EXISTS task;
 
-CREATE TABLE user (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+CREATE TABLE developers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    MainBranch TEXT NOT NULL,
+    Employment TEXT NOT NULL,
+    Country TEXT NOT NULL,
+    US_State TEXT NOT NULL,
+    UK_Country TEXT NOT NULL,
+    EdLevel TEXT NOT NULL,
+    Age1stCode TEXT NOT NULL,
+    LearnCode TEXT NOT NULL,
+    YearsCode TEXT NOT NULL,
+    YearsCodePro TEXT NOT NULL,
+    DevType TEXT NOT NULL,
+    OrgSize TEXT NOT NULL,
+    Currency TEXT NOT NULL,
+    CompTotal TEXT NOT NULL,
+    CompFreq TEXT NOT NULL,
+    LanguageHaveWorkedWith TEXT NOT NULL,
+    LanguageWantToWorkWith TEXT NOT NULL,
+    DatabaseHaveWorkedWith TEXT NOT NULL,
+    DatabaseWantToWorkWith TEXT NOT NULL,
+    PlatformHaveWorkedWith TEXT NOT NULL,
+    PlatformWantToWorkWith TEXT NOT NULL,
+    WebframeHaveWorkedWith TEXT NOT NULL,
+    WebframeWantToWorkWith TEXT NOT NULL,
+    MiscTechHaveWorkedWith TEXT NOT NULL,
+    MiscTechWantToWorkWith TEXT NOT NULL,
+    ToolsTechHaveWorkedWith TEXT NOT NULL,
+    ToolsTechWantToWorkWith TEXT NOT NULL,
+    NEWCollabToolsHaveWorkedWith TEXT NOT NULL,
+    NEWCollabToolsWantToWorkWith TEXT NOT NULL,
+    OpSys TEXT NOT NULL,
+    NEWStuck TEXT NOT NULL,
+    NEWSOSites TEXT NOT NULL,
+    SOVisitFreq TEXT NOT NULL,
+    SOAccount TEXT NOT NULL,
+    SOPartFreq TEXT NOT NULL,
+    SOComm TEXT NOT NULL,
+    NEWOtherComms TEXT NOT NULL,
+    Age TEXT NOT NULL,
+    Gender TEXT NOT NULL,
+    Trans TEXT NOT NULL,
+    Sexuality TEXT NOT NULL,
+    Ethnicity TEXT NOT NULL,
+    Accessibility TEXT NOT NULL,
+    MentalHealth TEXT NOT NULL,
+    SurveyLength TEXT NOT NULL,
+    SurveyEase TEXT NOT NULL,
+    ConvertedCompYearly TEXT NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 );
 
-CREATE TABLE post (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  author_id INTEGER NOT NULL,
-  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  title TEXT NOT NULL,
-  body TEXT NOT NULL,
-  FOREIGN KEY (author_id) REFERENCES user (id)
+CREATE TABLE task (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    type TEXT NOT NULL,
+    points INTEGER NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 );

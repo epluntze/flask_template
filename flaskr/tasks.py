@@ -7,21 +7,21 @@ from flask import request
 from flask import url_for
 from werkzeug.exceptions import abort
 
-from flaskr.auth import login_required
 from flaskr.db import get_db
 
-bp = Blueprint("blog", __name__)
+bp = Blueprint("tasks", __name__)
 
 
 @bp.route("/")
 def index():
     """Show all the posts, most recent first."""
-    db = get_db()
-    posts = db.execute(
-        "SELECT p.id, title, body, created, author_id, username"
-        " FROM post p JOIN user u ON p.author_id = u.id"
-        " ORDER BY created DESC"
-    ).fetchall()
+    if request.method == "GET":
+        db = get_db()
+        posts = db.execute(
+            "SELECT p.id, title, body, created, author_id, username"
+            " FROM post p JOIN user u ON p.author_id = u.id"
+            " ORDER BY created DESC"
+        ).fetchall()
     return render_template("blog/index.html", posts=posts)
 
 
@@ -58,7 +58,6 @@ def get_post(id, check_author=True):
 
 
 @bp.route("/create", methods=("GET", "POST"))
-@login_required
 def create():
     """Create a new post for the current user."""
     if request.method == "POST":
@@ -84,7 +83,6 @@ def create():
 
 
 @bp.route("/<int:id>/update", methods=("GET", "POST"))
-@login_required
 def update(id):
     """Update a post if the current user is the author."""
     post = get_post(id)
@@ -111,7 +109,6 @@ def update(id):
 
 
 @bp.route("/<int:id>/delete", methods=("POST",))
-@login_required
 def delete(id):
     """Delete a post.
 
