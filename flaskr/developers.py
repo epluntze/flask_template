@@ -22,7 +22,7 @@ def register():
             # the name is available, store it in the database and go to
             # the login page
             db.execute(
-                "INSERT INTO user (MainBranch, Employment, Country, US_State, UK_Country, EdLevel, Age1stCode, "
+                "INSERT INTO developers (MainBranch, Employment, Country, US_State, UK_Country, EdLevel, Age1stCode, "
                 "LearnCode, YearsCode, YearsCodePro, DevType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (body.get('MainBranch'), body.get('Employment'), body.get('Country'), body.get('US_State'),
                  body.get('UK_Country'), body.get('EdLevel'), body.get('Age1stCode'), body.get('LearnCode'),

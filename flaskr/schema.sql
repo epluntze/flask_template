@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS developers;
-DROP TABLE IF EXISTS task;
+DROP TABLE IF EXISTS tasks;
 
 CREATE TABLE developers(
    id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -79,7 +79,7 @@ INSERT INTO developers(MainBranch,Employment,Country,US_State,UK_Country,EdLevel
 INSERT INTO developers(MainBranch,Employment,Country,US_State,UK_Country,EdLevel,Age1stCode,LearnCode,YearsCode,YearsCodePro,DevType) VALUES ("I am a developer by profession","Student, full-time","India","NA","NA","Something else","5 - 10 years","Other online resources (ex: videos, blogs, etc)","2","NA","NA");
 
 
-CREATE TABLE task (
+CREATE TABLE tasks (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     task_type TEXT NOT NULL,
     points INTEGER NOT NULL,

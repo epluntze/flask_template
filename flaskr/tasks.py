@@ -50,7 +50,7 @@ def create():
         else:
             db = get_db()
             db.execute(
-                "INSERT INTO post (task_type, points) VALUES (?, ?)",
+                "INSERT INTO tasks (task_type, points) VALUES (?, ?)",
                 (body.get('task_type'), body.get('points')),
             )
             db.commit()
@@ -66,6 +66,6 @@ def delete(task_id):
     """
     get_task(task_id)
     db = get_db()
-    db.execute("DELETE FROM task WHERE id = ?", (task_id,))
+    db.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
     db.commit()
     return make_response(200, 'deleted')
