@@ -7,7 +7,7 @@ from flaskr.db import get_db
 bp = Blueprint("devs", __name__, url_prefix="/auth")
 
 
-@bp.route("/register", methods="POST")
+@bp.route("/register", methods=("POST",))
 def register():
     """Register a new developer.
     """

@@ -39,7 +39,7 @@ def get_task(task_id):
     return post
 
 
-@bp.route("/create", methods="POST")
+@bp.route("/create", methods=("POST",))
 def create():
     """Create a new post for the current user."""
     if request.method == "POST":
