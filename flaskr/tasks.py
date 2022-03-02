@@ -4,7 +4,7 @@ from flask import Blueprint, make_response, jsonify, request, abort
 
 from flaskr.db import get_db
 
-bp = Blueprint("tasks", __name__, url_prefix="/tasks")
+bp = Blueprint("tasks", __name__)
 
 
 @bp.route("/")
