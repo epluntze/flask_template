@@ -4,7 +4,7 @@ from flask import Blueprint, abort, make_response, request
 
 from flaskr.db import get_db
 
-bp = Blueprint("devs", __name__, url_prefix="/auth")
+bp = Blueprint("developers", __name__, url_prefix="/developers")
 
 
 @bp.route("/register", methods=("POST",))
@@ -29,7 +29,7 @@ def register():
                  body.get('YearsCode'), body.get('YearsCodePro'), body.get('DevType')),
             )
             db.commit()
-            return make_response(200, 'added')
+            return make_response('added', 200)
 
         abort(400, error)
 
