@@ -1,3 +1,6 @@
+image:
+  file: .gitpod.dockerfile
+
 ports:
   - port: 5000
     onOpen: open-preview
@@ -8,8 +11,11 @@ tasks:
       export FLASK_ENV=development
     init: |
       pip install -e .
+      pip install redis
+      pip install ipython
       flask init-db
     command: |
+      redis-server --daemonize yes
       flask run
 
 vscode:
