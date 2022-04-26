@@ -4,7 +4,7 @@ from flask import Blueprint, make_response, jsonify, request, abort
 
 from flaskr.db import get_db
 
-bp = Blueprint("tasks", __name__)
+bp = Blueprint("tasks", __name__, url_prefix="/tasks")
 
 
 @bp.route("/")
@@ -41,7 +41,7 @@ def get_task(task_id):
 
 @bp.route("/create", methods=("POST",))
 def create():
-    """Create a new post for the current user."""
+    """Create a new task"""
     if request.method == "POST":
         body = json.loads(request.data)
 
@@ -60,9 +60,6 @@ def create():
 @bp.route("/<int:task_id>/delete", methods=("POST",))
 def delete(task_id):
     """Delete a task.
-
-    Ensures that the post exists and that the logged in user is the
-    author of the post.
     """
     get_task(task_id)
     db = get_db()
