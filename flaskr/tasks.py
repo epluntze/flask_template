@@ -20,25 +20,6 @@ def index():
         return make_response(jsonify(tasks), 200)
 
 
-def get_task(task_id):
-    """Get a task by id.
-    """
-    post = (
-        get_db()
-        .execute(
-            "SELECT t.id, task_type, points"
-            " FROM task t WHERE t.id = ?",
-            (task_id,),
-        )
-        .fetchone()
-    )
-
-    if post is None:
-        abort(404, f"Post id {task_id} doesn't exist.")
-
-    return post
-
-
 @bp.route("/create", methods=("POST",))
 def create():
     """Create a new task"""
@@ -61,7 +42,6 @@ def create():
 def delete(task_id):
     """Delete a task.
     """
-    get_task(task_id)
     db = get_db()
     db.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
     db.commit()
